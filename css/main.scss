@@ -1,0 +1,56 @@
+---
+---
+@import "bourbon/bourbon";
+@import "base/base";
+@import "neat/neat";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  @include perspective(100px);
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+header {
+  & {
+    position: relative;
+    height: 100vh;
+    transform-style: preserve-3d;
+  }
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: no-repeat center top;
+    background-size: 100%;
+  }
+  .bg {
+    background-image: url(../images/header/bg.png);
+    @include transform(translateZ(-30px) scale(1.3));
+  }
+  .fg-1 {
+    background-image: url(../images/header/fg-1.png);
+    @include transform(translateZ(-20px) scale(1.2));
+  }
+  .fg-2 {
+    background-image: url(../images/header/fg-2.png);
+    background-position: center 70%;
+    @include transform(translateZ(-10px) scale(1.1));
+  }
+  .fg-3 {
+    background-image: url(../images/header/fg-3.png);
+    background-position: center 25%;
+    background-size: 50%;
+  }
+}
+
+section {
+  height: 100vh;
+}
