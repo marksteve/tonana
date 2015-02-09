@@ -11,6 +11,7 @@ body {
 
 .content {
   @include perspective(100px);
+  height: 600px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -19,6 +20,7 @@ body {
 header {
   & {
     position: relative;
+    height: 600px;
     height: 100vh;
     transform-style: preserve-3d;
   }
@@ -33,24 +35,33 @@ header {
   }
   .bg {
     background-image: url(../images/header/bg.png);
+    background-size: cover;
     @include transform(translateZ(-30px) scale(1.3));
   }
-  .fg-1 {
-    background-image: url(../images/header/fg-1.png);
+  .ribbons {
+    background-image: url(../images/header/ribbons.png);
     @include transform(translateZ(-20px) scale(1.2));
   }
-  .fg-2 {
-    background-image: url(../images/header/fg-2.png);
-    background-position: center 70%;
+  .buildings {
+    background-image: url(../images/header/buildings.png);
+    background-position: center bottom;
+    @include transform(translateZ(-20px) scale(1.2));
+  }
+  .title {
+    background-image: url(../images/header/title.png);
+    background-position: center 30%;
+    background-size: 50%;
     @include transform(translateZ(-10px) scale(1.1));
   }
-  .fg-3 {
-    background-image: url(../images/header/fg-3.png);
-    background-position: center 25%;
-    background-size: 50%;
+  .floral {
+    background-image: url(../images/header/floral.png);
+    background-position: center bottom;
   }
 }
 
 section {
+  position: relative;
+  background: white;
+  height: 600px;
   height: 100vh;
 }
