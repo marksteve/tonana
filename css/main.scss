@@ -4,13 +4,6 @@
 @import "base/base";
 @import "neat/neat";
 
-@mixin parallax {
-  position: relative;
-  height: 600px;
-  height: 100vh;
-  transform-style: preserve-3d;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -22,6 +15,13 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+@mixin parallax {
+  position: relative;
+  height: 600px;
+  height: 100vh;
+  transform-style: preserve-3d;
 }
 
 header {
@@ -65,13 +65,12 @@ section {
   & {
     background: $blue;
     position: relative;
-    padding: 5em 0;
+    padding: 1em 0;
   }
   .container {
     @include outer-container;
   }
   .page {
-    padding: 3em 0;
     font-size: 200%;
     text-align: center;
   }
@@ -85,7 +84,9 @@ section {
 }
 
 .save-the-date {
+  background: $blue url(../images/bg.png) repeat-y center top;
   .page {
+    padding: 3em 0;
     background: white;
   }
   .couple {
