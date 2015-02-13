@@ -51,9 +51,17 @@ header {
   }
   .title {
     background-image: url(../images/header/title.png);
-    background-position: center 30%;
-    background-size: 50%;
+    background-position: center 20%;
+    background-size: 40%;
     @include transform(translateZ(-10px) scale(1.1));
+  }
+  #timer {
+    font-size: 1.5em;
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    color: white;
+    text-align: center;
   }
   .floral {
     background-image: url(../images/header/floral.png);

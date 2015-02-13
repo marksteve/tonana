@@ -6,7 +6,9 @@ layout: default
   <div class="bg"></div>
   <div class="ribbons"></div>
   <div class="buildings"></div>
-  <div class="title"></div>
+  <div class="title">
+    <div id="timer"></div>
+  </div>
   <div class="floral"></div>
 </header>
 
@@ -48,24 +50,6 @@ layout: default
         UP Bahay ng Alumni
       </div>
       <div class="map">
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
-        <script type="text/javascript">
-            google.maps.event.addDomListener(window, 'load', init);
-            function init() {
-                var mapOptions = {
-                    zoom: 15,
-                    center: new google.maps.LatLng(14.6549, 121.0645),
-                    styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
-                };
-                var mapElement = document.getElementById('map');
-                var map = new google.maps.Map(mapElement, mapOptions);
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(40.6700, -73.9400),
-                    map: map,
-                    title: 'Snazzy!'
-                });
-            }
-        </script>
         <div id="map"></div>
       </div>
       <div class="heart">
@@ -86,3 +70,56 @@ layout: default
     </div>
   </div>
 </section>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
+<script type="text/javascript">
+  google.maps.event.addDomListener(window, 'load', init);
+  function init() {
+    var mapOptions = {
+      zoom: 15,
+      center: new google.maps.LatLng(14.6549, 121.0645),
+      styles: [{"stylers":[{"hue":"#2c3e50"},{"saturation":250}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":50},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
+    };
+    var mapElement = document.getElementById('map');
+    var map = new google.maps.Map(mapElement, mapOptions);
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(40.6700, -73.9400),
+      map: map,
+    });
+  }
+  var Timer = function(el, until) {
+    this.el = el;
+    this.until = until;
+  };
+  Timer.prototype = {
+    update: function() {
+      var time = this.until - new Date();
+      var d = time / (1000 * 60 * 60 * 24);
+      var D = Math.floor(d);
+      var h = (d - D) * 24;
+      var H = Math.floor(h);
+      var m = (h - H) * 60;
+      var M = Math.floor(m);
+      var s = (m - M) * 60;
+      var S = Math.floor(s);
+      this.el.innerText =
+        D + ' ' + this.p(D, 'day') + ', ' +
+        H + ' ' + this.p(H, 'hour') + ', ' +
+        M + ' ' + this.p(M, 'minute') + ', and ' +
+        S + ' ' + this.p(S, 'second') + ' to go!';
+      requestAnimationFrame(this.update.bind(this));
+    },
+    p: function(x, s) {
+      if (!x || x > 1) return s + 's';
+      return s;
+    },
+    start: function() {
+      this.update();
+    }
+  };
+  var timer = new Timer(
+    document.getElementById('timer'),
+    new Date(2015, 5, 23)
+  );
+  timer.start();
+</script>
