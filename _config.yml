@@ -1,7 +1,7 @@
 # Site settings
 title: Ton and Ana
 description: Ton and Ana
-baseurl: "/tonana"
+baseurl: ""
 url: "http://marksteve.com"
 
 # Build settings
