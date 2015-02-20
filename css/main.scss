@@ -198,7 +198,10 @@ section {
       @include shift(3);
       @include span-columns(6);
       font-size: 60%;
-      margin-bottom: 3em;
+      margin: {
+        top: 3em;
+        bottom: 5em;
+      }
     }
     input[type=text] {
       width: 100%;
@@ -220,5 +223,11 @@ section {
     button {
       width: 100%;
     }
+  }
+  #thanks {
+    font-size: 200%;
+    font-family: Alex Brush;
+    margin: 2em 0 3em 0;
+    display: none;
   }
 }

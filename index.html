@@ -66,7 +66,9 @@ layout: default
 <section class="rsvp">
   <div class="container">
     <div class="page">
-      <h3>RSVP</h3>
+      <div id="thanks">
+        Thank you and see you there!
+      </div>
       <form action="https://formic.marksteve.com/s/695ab405" method="post">
         <label class="name">
           Full Name
@@ -137,4 +139,10 @@ layout: default
     new Date(2015, 4, 23)
   );
   timer.start();
+</script>
+<script type="text/javascript">
+  if (location.hash.substr(1) === 'thanks') {
+    document.querySelector('.rsvp form').style.display = 'none';
+    document.querySelector('#thanks').style.display = 'block';
+  }
 </script>
