@@ -9,6 +9,10 @@ body {
   padding: 0;
 }
 
+button {
+  font-family: $base-font-family;
+}
+
 .content {
   @include perspective(100px);
   height: 600px;
@@ -187,5 +191,34 @@ section {
   .container {
     background: url(../images/jeepney.png) no-repeat center bottom;
     background-size: 3em;
+    margin-bottom: 1em;
+  }
+  form {
+    & {
+      @include shift(3);
+      @include span-columns(6);
+      font-size: 60%;
+      margin-bottom: 3em;
+    }
+    input[type=text] {
+      width: 100%;
+    }
+    label {
+      text-align: left;
+    }
+    .name {
+      @include span-columns(12);
+      @include omega;
+    }
+    .no {
+      @include span-columns(4);
+    }
+    .contact {
+      @include span-columns(8);
+      @include omega;
+    }
+    button {
+      width: 100%;
+    }
   }
 }
