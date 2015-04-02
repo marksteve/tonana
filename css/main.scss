@@ -128,26 +128,25 @@ section {
   }
   .date {
     & {
-      font-family: Parisienne;
       font-size: 2.5em;
       line-height: 1;
-    }
-    span {
-      font-size: 1.5em;
-      vertical-align: middle;
     }
   }
   .time {
     & {
-      width: 22em;
+      font-size: 1.5em;
       display: inline-block;
       letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: gold;
       margin-bottom: 2em;
     }
+    strong {
+      color: $blue;
+    }
     small {
+      color: $light-gray;
       display: block;
+      letter-spacing: 0.4em;
     }
   }
   .parish, .bna {
