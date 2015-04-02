@@ -86,7 +86,7 @@ section {
     font-size: 200%;
     text-align: center;
   }
-  h3 {
+  .label {
     font-size: 0.8em;
     font-weight: 300;
     text-transform: uppercase;
@@ -144,9 +144,27 @@ section {
       color: $blue;
     }
     small {
-      color: $light-gray;
+      color: $medium-gray;
       display: block;
       letter-spacing: 0.4em;
+    }
+  }
+  .start {
+    & {
+      color: $blue;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 2em;
+      letter-spacing: 0.1em;
+    }
+    strong {
+      background-color: $blue;
+      color: white;
+      line-height: 1.5;
+      padding: 0 1em;
+      font-size: 1.2em;
+      display: inline-block;
+      letter-spacing: 0.2em;
     }
   }
   .parish, .bna {
@@ -174,6 +192,7 @@ section {
     line-height: 1;
     width: 15em;
     display: inline-block;
+    color: $medium-gray;
   }
   .map {
     height: 300px;
