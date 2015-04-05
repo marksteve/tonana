@@ -2,9 +2,30 @@
 layout: default
 ---
 
+<ul class="nav">
+  <li>
+    <a href="#wedding">Wedding</a>
+  </li>
+  <li>
+    <a href="#entourage">Entourage</a>
+  </li>
+  <li>
+    <a href="#reception">Reception</a>
+  </li>
+  <li>
+    <a href="#map">Map</a>
+  </li>
+  <li>
+    <a href="#rsvp">RSVP</a>
+  </li>
+</ul>
+
+<div class="content">
+
 <header>
   <div class="bg"></div>
   <div class="title">
+    <h1>Ton and Ana</h1>
     <div id="timer"></div>
   </div>
   <div class="ribbons"></div>
@@ -12,42 +33,48 @@ layout: default
   <div class="floral"></div>
 </header>
 
-<section class="save-the-date">
+<section class="invitation">
   <div class="container">
     <div class="page">
-      <div class="label">We</div>
-      <div class="couple">
-        Froilan Antonio C. Bacuñgan<br>
-        <span>and</span>
-        Ana Katrina P. Apuan
+      <div id="wedding">
+        <div class="label">We</div>
+        <div class="couple">
+          Froilan Antonio C. Bacuñgan<br>
+          <span>and</span>
+          Ana Katrina P. Apuan
+        </div>
+        <div class="label">With the blessing of our parents</div>
+        <div class="parents">
+          <p>F. Albert C. Bacuñgan & Ma. Teresita C. Bacuñgan </p>
+          <p>Raul B. Apuan & Ma. Republica P. Apuan</p>
+        </div>
+        <div class="label">Would love for you to join us, this</div>
+        <div class="date">
+          23rd of MAY, 2015
+        </div>
+        <div class="time">
+          <strong>Eight o'clock</strong>
+          <small>Saturday morning</small>
+        </div>
+        <div class="start">
+          As we start our life together<br>
+          <strong>As husband and wife</strong>
+        </div>
+        <div class="label">At the</div>
+        <div class="parish">
+          UP Parish of the Holy Sacrifice
+        </div>
       </div>
-      <div class="label">With the blessing of our parents</div>
-      <div class="parents">
-        <p>F. Albert C. Bacuñgan & Ma. Teresita C. Bacuñgan </p>
-        <p>Raul B. Apuan & Ma. Republica P. Apuan</p>
+      <div id="entourage">
       </div>
-      <div class="label">Would love for you to join us, this</div>
-      <div class="date">
-        23rd of MAY, 2015
-      </div>
-      <div class="time">
-        <strong>Eight o'clock</strong>
-        <small>Saturday morning</small>
-      </div>
-      <div class="start">
-        As we start our life together<br>
-        <strong>As husband and wife</strong>
-      </div>
-      <div class="label">At the</div>
-      <div class="parish">
-        UP Parish of the Holy Sacrifice
-      </div>
-      <div class="label">
-        To be followed by<br>
-        the reception at the
-      </div>
-      <div class="bna">
-        UP Bahay ng Alumni
+      <div id="reception">
+        <div class="label">
+          To be followed by<br>
+          the reception at the
+        </div>
+        <div class="bna">
+          UP Bahay ng Alumni
+        </div>
       </div>
       <div class="map">
         <div id="map"></div>
@@ -59,17 +86,11 @@ layout: default
         &ldquo;It&rsquo;s not finding someone you can live with,
         it&rsquo;s finding the one you can&rsquo;t live without.&rdquo;
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="rsvp">
-  <div class="container">
-    <div class="page">
       <div id="thanks">
         Thank you and see you there!
       </div>
       <form action="https://formic.marksteve.com/s/695ab405" method="post">
+        <h2 id="rsvp">RSVP</h2>
         <label class="name">
           Full Name
           <input name="name" type="text" />
@@ -87,6 +108,8 @@ layout: default
     </div>
   </div>
 </section>
+
+</div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
 <script type="text/javascript">
@@ -139,10 +162,39 @@ layout: default
     new Date(2015, 4, 23)
   );
   timer.start();
-</script>
-<script type="text/javascript">
+
   if (location.hash.substr(1) === 'thanks') {
-    document.querySelector('.rsvp form').style.display = 'none';
+    document.querySelector('form').style.display = 'none';
     document.querySelector('#thanks').style.display = 'block';
   }
+
+  var content = document.querySelector('.content');
+  var nav = document.querySelector('.nav');
+
+  ;(function() {
+    var throttle = function(type, name, obj) {
+      var obj = obj || window;
+      var running = false;
+      var func = function() {
+        if (running) { return; }
+        running = true;
+        requestAnimationFrame(function() {
+          obj.dispatchEvent(new CustomEvent(name));
+          running = false;
+        });
+      };
+      obj.addEventListener(type, func);
+    };
+
+    throttle ("scroll", "optimizedScroll", content);
+  })();
+
+  // handle event
+  content.addEventListener("optimizedScroll", function(e) {
+    var opacity = (e.target.scrollTop - window.innerHeight) / 100;
+    opacity = opacity < 0 ? 0 : opacity;
+    opacity = opacity > 1 ? 1 : opacity;
+    nav.style.opacity = opacity;
+  });
 </script>
+
