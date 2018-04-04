@@ -1,8 +1,8 @@
 # Site settings
 title: Ton and Ana
 description: Ton and Ana
-baseurl: ""
-url: "http://marksteve.com"
+baseurl: "https://marksteve.com/tonana"
+url: "https://marksteve.com"
 
 # Build settings
 markdown: kramdown
